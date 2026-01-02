@@ -7,8 +7,10 @@ This document provides a detailed overview of artifacts and forensic evidence us
 **Core Concepts and Artifacts**
 
 **Program Execution Artifacts**
+-------------------------------
 
 **(1) Prefetch Files**
+----------------------
 
 
 - Purpose: Prefetcher was introduced in Windows XP to optimize application launch times by caching necessary files during the first **10 seconds** of an application’s execution.
@@ -86,8 +88,12 @@ This document provides a detailed overview of artifacts and forensic evidence us
 
 - ShimCache (AppCompatCache) location: HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache\AppCompatCache
 
-- Tool : Eric Zimmerman's AppCompatCacheParser (https://download.ericzimmermanstools.com/net9/AppCompatCacheParser.zip)
+- Tool : **Eric Zimmerman's AppCompatCacheParser** (https://download.ericzimmermanstools.com/net9/AppCompatCacheParser.zip)
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**(3) AmCache**
+---------------
   
 
  
