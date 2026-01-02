@@ -11,7 +11,7 @@ This document provides a detailed overview of artifacts and forensic evidence us
 **(1) Prefetch Files**
 
 
-- Purpose: Prefetcher was introduced in Windows XP to optimize application launch times by caching necessary files during the first 10 seconds of an application’s execution.
+- Purpose: Prefetcher was introduced in Windows XP to optimize application launch times by caching necessary files during the first **10 seconds** of an application’s execution.
 
 - Location: C:\Windows\Prefetch
 
