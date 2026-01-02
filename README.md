@@ -72,8 +72,8 @@ This document provides a detailed overview of artifacts and forensic evidence us
  
 -  Misunderstood things :
      
-     - You can NOT use shimcache to prove execution in Windows 10 (like "there is no execution-flag") .
-     - Only written on reboot or shutdown
+    - You can NOT use shimcache to prove execution in Windows 10 (like "there is no execution-flag") .
+    - Only written on reboot or shutdown
 
 
 - Shimcache can be used to show executable files present on, or accessed via, a given system.
