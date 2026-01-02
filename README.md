@@ -49,4 +49,46 @@ This document provides a detailed overview of artifacts and forensic evidence us
   - Last run: Modification date of the file
 
 - Parsing Tool: **Eric Zimmerman’s PECmd.exe** (https://download.ericzimmermanstools.com/net9/PECmd.zip) is recommended for analyzing Prefetch files.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**(2) ShimCache or AppCompatCache**
+
+
+- What it does :
+
+  - Provides compatibility for older software running in newer versions of Windows.
+  - Executable file name, file path ,and timestamp are recorded.
+  - Windows 7/8/8.1 had an "execution flag" that could indicate if the program ran.
+  - Renanming or moving a file will cause it to be re-shimmed.
+  - Last 1024 entries are retained.
+  - Most tools will output data with the most recently shimmed entries at the top.
+  - Stored in the SYSTEM registry hive
+ 
+- Confusion Points :
+
+  - Timestamp is the last modification time of the file
+  - File visible in Windows Explorer or File Explorer can determine what is added to the Shimcache
+ 
+-  Misunderstood things :
+
+  - You can NOT use shimcache to prove execution in Windows 10 (like "there is no execution-flag") .
+  - Only written on reboot or shutdown
+
+
+- Shimcache can be used to show executable files present on, or accessed via, a given system.
+
+- Even if we can't determine execution on a Windows 10 system,we can show that a file once existed on that system, or was browsed to via an external drive or UNC path.
+
+- Anti-Forensics is complicated by the fact that the data resides in memory until reboot or shutdown, at which time the shimcache is commited to the Registry
+
+- File Location: C:\Windows\System32\config\SYSTEM hive (not a standalone file)
+
+- ShimCache (AppCompatCache) location: HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache\AppCompatCache
+
+- Tool : Eric Zimmerman's AppCompatCacheParser (https://download.ericzimmermanstools.com/net9/AppCompatCacheParser.zip)
+
+  
+
+ 
   
