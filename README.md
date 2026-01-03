@@ -147,7 +147,7 @@ This document provides a detailed overview of artifacts and forensic evidence us
 
     
   | Table GUID                            | Description                 | Key Data                                                                                              |
-  |---------------------------------------|:---------------------------:|------------------------------------------------------------------------------------------------------:|
+  |---------------------------------------|:---------------------------:|-------------------------------------------------------------------------------------------------------|
   |{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89} | Application Resource Usage  |Foreground/Background CPU cycles, bytes read/written, context switches per app/user (1-hour buckets)   |
   |                                       |                             |                                                                                                       |
   |{973F5D5C-1D90-4944-BE8E-24B94231A174} | Network Usage               |Bytes sent/received, interface GUIDs per app                                                           | 
