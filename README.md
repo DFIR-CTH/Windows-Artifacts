@@ -145,7 +145,7 @@ This document provides a detailed overview of artifacts and forensic evidence us
 
 - Key Tables :
 
-  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|  
+    
   | Table GUID                            | Description                 | Key Data                                                                                              |
   |---------------------------------------|:---------------------------:|------------------------------------------------------------------------------------------------------:|
   |{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89} | Application Resource Usage  |Foreground/Background CPU cycles, bytes read/written, context switches per app/user (1-hour buckets)   |
@@ -155,7 +155,8 @@ This document provides a detailed overview of artifacts and forensic evidence us
   |{DD6636C4-8929-4683-974E-22C046A43763} | Network Connections         |Connection start times, duration, interfaces                                                           | 
   |                                       |                             |                                                                                                       |
   |{5C8CF1C7-7257-4F13-B223-970EF5939312} | Execution                   |App duration, network bytes (Win10+)                                                                   |
-  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+- Tool : **SRUM-DUMP.EXE** (https://github.com/MarkBaggett/srum-dump)
   
   
   
