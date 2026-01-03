@@ -2,9 +2,11 @@
 
 This document provides a detailed overview of artifacts and forensic evidence used to detect compromised endpoints even when no active malware is present. The focus is on Windows operating system artifacts that capture program execution and user activity, which can aid in incident response and threat hunting
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 **Core Concepts and Artifacts**
+
 
 **Program Execution Artifacts**
 -------------------------------
@@ -55,6 +57,7 @@ This document provides a detailed overview of artifacts and forensic evidence us
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **(2) ShimCache or AppCompatCache**
+-----------------------------------
 
 
 - What it does :
@@ -90,11 +93,56 @@ This document provides a detailed overview of artifacts and forensic evidence us
 
 - Tool : **Eric Zimmerman's AppCompatCacheParser** (https://download.ericzimmermanstools.com/net9/AppCompatCacheParser.zip)
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **(3) AmCache**
 ---------------
+
+
+- Purpose : Amcache.hve is a Windows registry hive file that stores metadata about program executions, including file paths, SHA-1 hashes, sizes, publishers, and timestamps for applications, drivers, and DLLs. It aids DFIR by providing evidence of run executables, even if deleted, across Windows 7/Server 2008 R2 and later.
+
+- File Location : C:\Windows\AppCompat\Programs\Amcache.hve  , with associated transaction logs like Amcache.hve.LOG1 and .LOG2
+
+- Data Structure : Key registry paths include Root\File (file entries with execution details) and Root\Programs (program metadata with pointers to files). Entries capture full paths, SHA1 hashes (for files <31MB), file sizes, compilation timestamps, and last write times for File Key.
+
+- Tool : **Eric Zimmerman's AmcacheParser** (https://download.ericzimmermanstools.com/net9/AmcacheParser.zip)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+**(4) UserAssist**
+-------------------
+
+
+- Purpose : UserAssist is a Windows registry artifact that tracks GUI-based application launches via Explorer, recording paths, run counts, last execution times, focus times, and counts for user activity reconstruction in DFIR.
+
+- Registry Locations : Primary paths under each user's NTUSER.DAT/NTUSER.dat **hive: HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count\[ROT13-encoded values]**
+
+  - with GUIDs like
+  {75048700-EF1F-11D0-9888-006097DEACF9} (Windows XP+),
+  {CEBFF5CD-ACE2-4F4F-9178-9926F41749EA} (Vista+), and
+  {F4E57C4B-2036-45F0-A9DD-CF56972AC756} for UWP apps (Win10+)
+
+- Data Structure : Values use ROT13 encoding for app names (e.g., "C:\Windows\system32\notepad.exe" becomes obfuscated string); binary data includes 4-byte run count, 8-byte FILETIME last run timestamp, focus count/time (Vista+), and session ID.
+
+- Versions Differences :
+    
+    - XP/2000: Basic path, count, last run time.
+    - Vista/7: Adds focus time/count.
+    - 8+: Higher focus precision.
+    - 10/11: UWP app tracking.
+ 
+- Tool : **Eric Zimmerman's RegistryExplorer** (https://download.ericzimmermanstools.com/net9/RegistryExplorer.zip)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**(5) SRUM**
+
+
+
+
+  
+  
+  
   
 
- 
   
