@@ -15,44 +15,49 @@ This document provides a detailed overview of artifacts and forensic evidence us
 ----------------------
 
 
-- Purpose: Prefetcher was introduced in Windows XP to optimize application launch times by caching necessary files during the first **10 seconds** of an application’s execution.
+| **Attribute**              | **Details** |
+|----------------------------|-------------|
+| **Purpose**                | Introduced in Windows XP to optimize application launch times by caching files executed in first **10 seconds** of app execution. |
+| **Location**               | `C:\Windows\Prefetch` |
+| **File Extensions**        | `.pf` (primary), `.ebd`, `.mkd` |
+| **Example Filename**       | `CMD.EXE-4A818364.pf` (suffix = hash value) |
+| **Parsing Tool**           | **Eric Zimmerman's PECmd.exe** |
 
-- Location: C:\Windows\Prefetch
+## Hash Generation Process
 
-- File Extensions: Mainly .pf but can include .ebd, .mkd, and others.
+| **Step** | **Process** |
+|----------|-------------|
+| 1 | Determine full file path (e.g., `C:\Windows\NOTEPAD.EXE`) |
+| 2 | Convert to Unicode string |
+| 3 | Convert to device path format (`\DEVICE\HARDDISKVOLUMEx\WINDOWS\NOTEPAD.EXE`) |
+| 4 | Apply hashing function → generates filename hash |
 
-- Example Filename: CMD.EXE-4A818364.pf (where the suffix is a hash value)
+## Special Cases & Binary Locations
 
-- Hash Generation Process:
-  
-  - Determine the full file path (e.g., C:\Windows\NOTEPAD.EXE)
-  - Convert the path to a Unicode string
-  - Convert to device path format (e.g., \DEVICE\HARDDISKVOLUMEx\WINDOWS\NOTEPAD.EXE)
-  - Apply a hashing function to generate the filename hash
+| **Executable Type** | **Hash Includes** | **64-bit Location** | **32-bit Location** |
+|-------------------|------------------|-------------------|-------------------|
+| Standard EXEs | File path only | `C:\Windows\System32` | `C:\Windows\SysWOW64` |
+| **dllhost.exe, mmc.exe, rundll32.exe** | **Command-line parameters** (case/spacing sensitive) | `C:\Windows\System32` | `C:\Windows\SysWOW64` |
 
-- Special Cases: For executables like dllhost.exe, mmc.exe, and rundll32.exe, command-line parameters are included in the hash calculation. Variations in case and spacing in parameters affect the hash outcome.
-  
-- Binary Locations:
+## Limits & Availability
 
-  - 64-bit Windows: C:\Windows\System32
-  - 32-bit Windows: C:\Windows\SysWOW64
+| **Windows Version** | **Prefetch Limit** | **Enabled By Default** |
+|-------------------|-------------------|----------------------|
+| XP, Vista, 7 | 128 files | Workstations only |
+| 8+ | 1024 files | Workstations only |
 
-- Important Considerations:
+## Timestamps
 
-  - Prefetch files are referenced and updated on each program run to improve performance.
-  - These files rarely appear in unallocated disk space because they are actively maintained by the OS.
-  - Prefetch is enabled only on Windows workstations by default, not on servers.
-  - Limits on Prefetch Files:
-  - Windows XP, Vista, 7: limit of 128 files
-  - Windows 8 and later: limit increased to 1024 files
-  - Oldest files are automatically purged first.
+| **Event** | **File Attribute** |
+|-----------|-------------------|
+| First Run | Creation Date |
+| Last Run | Modification Date |
 
-- Timestamps in Prefetch:
+## Key Forensic Notes
+- Files **updated each run** for performance optimization
+- **Rarely** found in unallocated space (actively maintained by OS)
+- **Oldest files auto-purged** when limits reached
 
-  - First run: Creation date of the file
-  - Last run: Modification date of the file
-
-- Parsing Tool: **Eric Zimmerman’s PECmd.exe** (https://download.ericzimmermanstools.com/net9/PECmd.zip) is recommended for analyzing Prefetch files.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
