@@ -4,4 +4,13 @@ This document provides a detailed overview of artifacts and forensic evidence us
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 🚀📁 01 . [PROGRAM_EXECUTION_ARTIFACTS](Artifacts/Program_Execution_Artifacts.md)
+## 🚀 01 . [PROGRAM_EXECUTION_ARTIFACTS](Artifacts/Program_Execution_Artifacts.md)
+## 📁 02. [File Opening Artifacts](Artifacts/File%20Opening%20Artifacts.md)
+## 📚 03. [File Knowledge Artifacts](Artifacts/File%20Knowledge%20Artifacts.md)
+## 📝 04. [Event Logs Artifacts](Artifacts/Event%20Logs%20Artifacts.md)
+## 🌐 05. [Browser Usage Artifacts](Artifacts/Browser%20Usage%20Artifacts.md)
+
+
+---
+
+## [References](Artifacts/References.md)
