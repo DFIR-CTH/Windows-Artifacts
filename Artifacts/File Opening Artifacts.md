@@ -1,5 +1,16 @@
 ## 📁 File Opening Artifacts
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----
+
+### [Shortcut Files (.LNK)](File%20Opening%20Artifacts.md#shortcut-files-lnk)
+
+### [Jump Lists](File%20Opening%20Artifacts.md#jump-lists)
+
+### [ShellBags](File%20Opening%20Artifacts.md#shellbags)
+
+### [OpenSaveMRU](File%20Opening%20Artifacts.md#opensavemru)
+
+### [Prefetch Files](File%20Opening%20Artifacts.md#prefetch-files)
+
 
 
 ### Shortcut Files (.LNK)
@@ -15,6 +26,10 @@
 
 ---
 
+
+
+
+
 ### Jump Lists
 
 | **Field** | **Details** |
@@ -27,6 +42,10 @@
 | **Additional Info** | • Introduced in Windows 7, continued through Windows 11<br>• AutomaticDestinations more forensically valuable (MRU + timestamps)<br>• CustomDestinations useful for browser favorites, RDP connections<br>• AppID algorithm same for both Automatic and Custom<br>• Can track cloud storage access, browser history, remote desktop usage<br>• Useful for data exfiltration investigations (USB, cloud uploads) |
 
 ---
+
+
+
+
 
 ### ShellBags
 
@@ -41,6 +60,10 @@
 
 ---
 
+
+
+
+
 ### OpenSaveMRU
 
 | **Field** | **Details** |
@@ -53,6 +76,10 @@
 | **Additional Info** | • Key renamed from OpenSaveMRU to OpenSavePidlMRU in Vista+<br>• Stores up to 20 entries (10 in XP) per file extension<br>• Critical for tracking malicious file downloads<br>• Reveals user interaction with suspicious file types<br>• Does NOT include auto-complete fragments (stored in key itself)<br>• Correlates with LastVisitedMRU to identify which application accessed file<br>• Can reveal external drive paths and network share access |
 
 ---
+
+
+
+
 
 ### Prefetch Files
 
