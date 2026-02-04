@@ -30,7 +30,7 @@
 | **Example Filename**       | `CMD.EXE-4A818364.pf` (suffix = hash value) |
 | **Parsing Tool**           | **Eric Zimmerman's PECmd.exe** |
 
-## Hash Generation Process
+**Hash Generation Process**
 
 | **Step** | **Process** |
 |----------|-------------|
@@ -39,28 +39,28 @@
 | 3 | Convert to device path format (`\DEVICE\HARDDISKVOLUMEx\WINDOWS\NOTEPAD.EXE`) |
 | 4 | Apply hashing function → generates filename hash |
 
-## Special Cases & Binary Locations
+**Special Cases & Binary Locations**
 
 | **Executable Type** | **Hash Includes** | **64-bit Location** | **32-bit Location** |
 |-------------------|------------------|-------------------|-------------------|
 | Standard EXEs | File path only | `C:\Windows\System32` | `C:\Windows\SysWOW64` |
 | **dllhost.exe, mmc.exe, rundll32.exe** | **Command-line parameters** (case/spacing sensitive) | `C:\Windows\System32` | `C:\Windows\SysWOW64` |
 
-## Limits & Availability
+**Limits & Availability**
 
 | **Windows Version** | **Prefetch Limit** | **Enabled By Default** |
 |-------------------|-------------------|----------------------|
 | XP, Vista, 7 | 128 files | Workstations only |
 | 8+ | 1024 files | Workstations only |
 
-## Timestamps
+**Timestamps**
 
 | **Event** | **File Attribute** |
 |-----------|-------------------|
 | First Run | Creation Date |
 | Last Run | Modification Date |
 
-## Key Forensic Notes
+**Key Forensic Notes**
 - Files **updated each run** for performance optimization
 - **Rarely** found in unallocated space (actively maintained by OS)
 - **Oldest files auto-purged** when limits reached
@@ -70,7 +70,8 @@
 
 
 
-🛡️💾 **(2) ShimCache or AppCompatCache**
+
+## 🛡️💾 (2) ShimCache or AppCompatCache
 
 
 | Aspect                  | Details                                                                                                   |
@@ -87,7 +88,7 @@
 
 
 
-📱📦 **(3) AmCache**
+## 📱📦 (3) AmCache
 
 
 | Aspect                  | Details                                                                                                   |
@@ -101,7 +102,7 @@
 
 
 
-👤🖱️ **(4) UserAssist**
+## 👤🖱️ **(4) UserAssist**
 
 
 | Aspect                  | Details                                                                                                   |
@@ -116,7 +117,7 @@
 
 
 
-📊⏱️ **(5) SRUM (System Resource Utilization Monitor)**
+## 📊⏱️ **(5) SRUM (System Resource Utilization Monitor)**
 
 
 | Aspect                  | Details                                                                                                   |
